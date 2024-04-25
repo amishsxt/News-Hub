@@ -2,12 +2,14 @@ package com.example.newshub.presentation.ui.SplashScreen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import com.example.newshub.R;
 import com.example.newshub.databinding.ActivitySplashBinding;
+import com.example.newshub.presentation.ui.MainScreen.MainActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -32,7 +34,10 @@ public class SplashActivity extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                checkLoginStatus();
+
+                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
             }
 
             @Override
