@@ -34,10 +34,9 @@ public class TrendingFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentTrendingBinding.inflate(inflater, container, false);
-        View rootView = binding.getRoot();
+        binding = FragmentTrendingBinding.bind(inflater.inflate(R.layout.fragment_trending, container, false));
 
-        // Initialize ViewModel
+        //init ViewModel
         newsViewModel = new ViewModelProvider(this).get(NewsViewModel.class);
         articleList = new ArrayList<>();
 
@@ -57,7 +56,7 @@ public class TrendingFragment extends Fragment {
             }
         });
 
-        return rootView;
+        return binding.getRoot();
     }
 
     private void updateNewsArticles(List<Article> newArticles) {
