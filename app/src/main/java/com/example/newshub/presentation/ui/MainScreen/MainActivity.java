@@ -2,15 +2,13 @@ package com.example.newshub.presentation.ui.MainScreen;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
 
 import com.example.newshub.databinding.ActivityMainBinding;
-import com.example.newshub.presentation.adapter.NewsPagerAdapter;
-import com.example.newshub.presentation.ui.MainScreen.CategoryFrags.AllFragment;
+import com.example.newshub.presentation.adapter.CategoryPagerAdapter;
+import com.example.newshub.presentation.ui.MainScreen.CategoryFrags.TrendingFragment;
 import com.example.newshub.presentation.ui.MainScreen.CategoryFrags.EntertainmentFragment;
 import com.example.newshub.presentation.ui.MainScreen.CategoryFrags.HealthFragment;
 import com.example.newshub.presentation.ui.MainScreen.CategoryFrags.SportsFragment;
@@ -25,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
     private ViewPager2 viewPager2;
-    private NewsPagerAdapter adapter;
+    private CategoryPagerAdapter adapter;
     private TabLayout tabLayout;
 
     private List<Fragment> fragments;
@@ -40,16 +38,14 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = binding.tabLayout;
 
         addFrags();
-        adapter = new NewsPagerAdapter(getSupportFragmentManager(), getLifecycle(), fragments);
+        adapter = new CategoryPagerAdapter(getSupportFragmentManager(), getLifecycle(), fragments);
         viewPager2.setAdapter(adapter);
 
-        // Link TabLayout with ViewPager2
-//        new TabLayoutMediator(tabLayout, viewPager2, null).attach();
 
         new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> {
             switch (position) {
                 case 0:
-                    tab.setText("All");
+                    tab.setText("Trending");
                     break;
                 case 1:
                     tab.setText("Technology");
@@ -74,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         // Create fragment list
         fragments = new ArrayList<>();
 
-        fragments.add(new AllFragment());
+        fragments.add(new TrendingFragment());
         fragments.add(new TechnologyFragment());
         fragments.add(new SportsFragment());
         fragments.add(new HealthFragment());
