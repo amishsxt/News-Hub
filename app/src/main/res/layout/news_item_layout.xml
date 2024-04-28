@@ -23,10 +23,10 @@
 
             <ImageView
                 android:id="@+id/newsImg"
-                android:layout_width="@dimen/_120sdp"
-                android:layout_height="@dimen/_120sdp"
+                android:layout_width="@dimen/_60sdp"
+                android:layout_height="@dimen/_60sdp"
                 android:src="@drawable/news_default"
-                android:scaleType="center"/>
+                android:scaleType="centerCrop"/>
 
             <ProgressBar
                 android:id="@+id/imgProgressBar"
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_weight="1"
-            android:layout_marginStart="10dp">
+            android:layout_marginStart="12dp">
 
             <TextView
                 android:id="@+id/title"
@@ -52,20 +52,19 @@
                 android:text="title"
                 android:textColor="@color/white"
                 android:fontFamily="@font/f_medium"
-                android:textSize="@dimen/_16ssp"
-                android:maxLines="3"
+                android:textSize="@dimen/_13ssp"
+                android:maxLines="2"
                 android:ellipsize="end"/>
 
             <TextView
-                android:id="@+id/description"
+                android:id="@+id/source"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="description"
-                android:textColor="@color/white"
+                android:text="source"
+                android:textColor="@color/light_grey"
                 android:fontFamily="@font/f_regular"
-                android:textSize="@dimen/_13ssp"
+                android:textSize="@dimen/_10ssp"
                 android:layout_marginTop="5dp"
-                android:maxLines="4"
                 android:ellipsize="end"/>
 
         </LinearLayout>

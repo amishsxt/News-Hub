@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.newshub.R;
 import com.example.newshub.data.model.Article;
+import com.example.newshub.presentation.utils.DateFormatter;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -43,7 +44,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
     public void onBindViewHolder(@NonNull NewsViewHolder holder, int position) {
         Article article = articleList.get(position);
         holder.title.setText(article.getTitle());
-        holder.description.setText(article.getDescription());
+        holder.source.setText(article.getSource().getName());
 
         // Set image using Picasso
         if (article.getUrlToImage() != null) {
@@ -75,7 +76,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
     public class NewsViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView title, description;
+        private TextView title, source;
         private ImageView imageView;
         private ProgressBar progressBar;
 
@@ -84,7 +85,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             super(itemView);
 
             title = itemView.findViewById(R.id.title);
-            description = itemView.findViewById(R.id.description);
+            source = itemView.findViewById(R.id.source);
             imageView = itemView.findViewById(R.id.newsImg);
             progressBar = itemView.findViewById(R.id.imgProgressBar);
         }

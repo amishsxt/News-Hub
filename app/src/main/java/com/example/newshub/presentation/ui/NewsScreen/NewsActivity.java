@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.newshub.R;
 import com.example.newshub.data.model.Article;
 import com.example.newshub.databinding.ActivityNewsBinding;
+import com.example.newshub.presentation.utils.DateFormatter;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -62,8 +63,9 @@ public class NewsActivity extends AppCompatActivity{
     private void setData(){
 
         binding.title.setText(article.getTitle());
+        binding.publishDate.setText(DateFormatter.formatDate(article.getPublishedAt()));
         binding.description.setText(article.getDescription());
-        binding.author.setText(article.getAuthor());
+        binding.source.setText(article.getSource().getName());
         binding.content.setText(article.getContent());
 
         if(article.getUrlToImage()!=null){
