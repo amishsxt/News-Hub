@@ -39,8 +39,8 @@ public class TrendingFragment extends Fragment{
 
         // Init RecyclerView and its adapter
         newsAdapter = new NewsAdapter(getContext(), new ArrayList<>());
-        binding.trendingRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-        binding.trendingRecyclerView.setAdapter(newsAdapter);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+        binding.recyclerView.setAdapter(newsAdapter);
 
         // Fetch top headlines
         newsViewModel.fetchTopHeadlines();

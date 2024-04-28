@@ -19,6 +19,7 @@ public class NewsRepository implements NewsRemoteDataSource {
         this.newsApiDataSource = new NewsApiDataSource();
     }
 
+    @Override
     public void getTopHeadlines(DataSourceCallback<List<Article>> callback) {
         newsApiDataSource.getTopHeadlines(new DataSourceCallback<List<Article>>() {
             @Override
@@ -32,6 +33,21 @@ public class NewsRepository implements NewsRemoteDataSource {
             }
         });
 
+    }
+
+    @Override
+    public void getCategoryHeadlines(String category, DataSourceCallback callback) {
+        newsApiDataSource.getCategoryHeadlines(category, new DataSourceCallback<List<Article>>() {
+            @Override
+            public void onSuccess(List<Article> data) {
+                callback.onSuccess(data);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                callback.onError(errorMessage);
+            }
+        });
     }
 }
 

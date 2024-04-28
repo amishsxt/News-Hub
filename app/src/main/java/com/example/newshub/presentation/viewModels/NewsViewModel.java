@@ -17,6 +17,9 @@ public class NewsViewModel extends ViewModel {
     private MutableLiveData<List<Article>> newsArticles = new MutableLiveData<>();
     private MutableLiveData<String> errorMessage = new MutableLiveData<>();
 
+    private MutableLiveData<List<Article>> categoryNewsArticles = new MutableLiveData<>();
+    private MutableLiveData<String> categoryErrorMessage = new MutableLiveData<>();
+
     public NewsViewModel() {
         this.newsRepository = new NewsRepository();
     }
@@ -29,6 +32,14 @@ public class NewsViewModel extends ViewModel {
         return errorMessage;
     }
 
+    public LiveData<List<Article>> getCategoryNewsArticles() {
+        return categoryNewsArticles;
+    }
+
+    public LiveData<String> getCategoryErrorMessage() {
+        return categoryErrorMessage;
+    }
+
     public void fetchTopHeadlines() {
         newsRepository.getTopHeadlines(new DataSourceCallback<List<Article>>() {
             @Override
@@ -39,6 +50,20 @@ public class NewsViewModel extends ViewModel {
             @Override
             public void onError(String errorMessage) {
                 NewsViewModel.this.errorMessage.postValue(errorMessage);
+            }
+        });
+    }
+
+    public void fetchCategoryHeadlines(String category){
+        newsRepository.getCategoryHeadlines(category, new DataSourceCallback<List<Article>>() {
+            @Override
+            public void onSuccess(List<Article> data) {
+                categoryNewsArticles.postValue(data);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                NewsViewModel.this.categoryErrorMessage.postValue(errorMessage);
             }
         });
     }

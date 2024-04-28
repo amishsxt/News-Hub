@@ -55,5 +55,27 @@ public class NewsApiDataSource implements NewsRemoteDataSource {
         });
     }
 
+    @Override
+    public void getCategoryHeadlines(String category, DataSourceCallback callback) {
+        Call<ArticleResponse> call = newsApiService.getCategoryHeadlines(COUNTRY_CODE, category, API_KEY);
+
+        call.enqueue(new Callback<ArticleResponse>() {
+            @Override
+            public void onResponse(Call<ArticleResponse> call, Response<ArticleResponse> response) {
+                if (response.isSuccessful()) {
+                    callback.onSuccess(response.body().getArticles());
+                    Log.d("Response", response.body().getStatus());
+                } else {
+                    callback.onError("Failed to fetch " + category + " headlines");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArticleResponse> call, Throwable t) {
+                callback.onError(t.getMessage());
+                Log.d("Call Failure", t.getMessage());
+            }
+        });
+    }
 }
 

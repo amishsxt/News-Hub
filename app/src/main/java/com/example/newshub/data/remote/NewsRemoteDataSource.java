@@ -8,4 +8,6 @@ import java.util.List;
 public interface NewsRemoteDataSource {
 
     void getTopHeadlines(DataSourceCallback<List<Article>> callback);
+
+    void getCategoryHeadlines(String category, DataSourceCallback callback);
 }
