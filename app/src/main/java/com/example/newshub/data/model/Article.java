@@ -1,8 +1,9 @@
 package com.example.newshub.data.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Article {
+public class Article implements Serializable {
 
     private Source source;
 

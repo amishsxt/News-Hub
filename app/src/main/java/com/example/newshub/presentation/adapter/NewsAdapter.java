@@ -23,6 +23,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
 
     private Context context;
     private List<Article> articleList;
+    private NewsAdapterListener listener;
 
     public NewsAdapter() {
     }
@@ -49,11 +50,27 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
             holder.setPicture(holder.imageView, Uri.parse(article.getUrlToImage()));
         }
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onItemClick(article);
+            }
+        });
+
     }
 
     @Override
     public int getItemCount() {
         return articleList.size();
+    }
+
+
+    public interface NewsAdapterListener{
+        public void onItemClick(Article article);
+    }
+
+    public void setOnItemClickListener(NewsAdapterListener listener){
+        this.listener = listener;
     }
 
     public class NewsViewHolder extends RecyclerView.ViewHolder{

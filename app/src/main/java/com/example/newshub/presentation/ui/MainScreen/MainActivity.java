@@ -1,18 +1,18 @@
 package com.example.newshub.presentation.ui.MainScreen;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.os.Bundle;
-
 import com.example.newshub.databinding.ActivityMainBinding;
 import com.example.newshub.presentation.adapter.CategoryPagerAdapter;
-import com.example.newshub.presentation.ui.MainScreen.CategoryFrags.TrendingFragment;
 import com.example.newshub.presentation.ui.MainScreen.CategoryFrags.EntertainmentFragment;
 import com.example.newshub.presentation.ui.MainScreen.CategoryFrags.HealthFragment;
 import com.example.newshub.presentation.ui.MainScreen.CategoryFrags.SportsFragment;
 import com.example.newshub.presentation.ui.MainScreen.CategoryFrags.TechnologyFragment;
+import com.example.newshub.presentation.ui.MainScreen.CategoryFrags.TrendingFragment;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
