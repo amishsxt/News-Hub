@@ -3,6 +3,7 @@ package com.example.newshub.presentation.ui.MainScreen;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -13,6 +14,7 @@ import com.example.newshub.presentation.ui.MainScreen.CategoryFrags.HealthFragme
 import com.example.newshub.presentation.ui.MainScreen.CategoryFrags.SportsFragment;
 import com.example.newshub.presentation.ui.MainScreen.CategoryFrags.TechnologyFragment;
 import com.example.newshub.presentation.ui.MainScreen.CategoryFrags.TrendingFragment;
+import com.google.android.material.search.SearchBar;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -63,6 +65,19 @@ public class MainActivity extends AppCompatActivity {
                     tab.setText("Tab " + (position + 1));
             }
         }).attach();
+
+        //searching logic
+        binding.searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
     }
 
     private void addFrags(){
