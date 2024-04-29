@@ -46,6 +46,13 @@ public class NewsActivity extends AppCompatActivity{
                 openWebSource();
             }
         });
+
+        binding.shareBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                share();
+            }
+        });
     }
 
     private void openWebSource() {
@@ -101,5 +108,13 @@ public class NewsActivity extends AppCompatActivity{
     private void hideImgProgressBar(){
         binding.articleImg.setVisibility(View.VISIBLE);
         binding.imgProgressBar.setVisibility(View.GONE);
+    }
+
+    private void share(){
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, article.getUrl());
+
+        startActivity(Intent.createChooser(shareIntent, "Share with"));
     }
 }

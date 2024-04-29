@@ -19,21 +19,22 @@
         android:paddingVertical="10dp">
 
         <ImageView
-            android:id="@+id/bookBtn"
+            android:id="@+id/profileBtn"
             android:layout_width="42dp"
             android:layout_height="42dp"
             android:src="@drawable/news_default" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/materialCardView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
             app:cardCornerRadius="45dp"
-            android:layout_marginHorizontal="10dp">
+            android:layout_marginHorizontal="10dp"
+            android:layout_weight="1">
 
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/searchView"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:queryHint="Search here"
                 app:iconifiedByDefault="false"
@@ -65,6 +66,5 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:paddingVertical="10dp"/>
-
 
 </RelativeLayout>
