@@ -48,6 +48,7 @@ public class HealthFragment extends Fragment {
         newsViewModel.getCategoryNewsArticles().observe(this, new Observer<List<Article>>() {
             @Override
             public void onChanged(List<Article> articles) {
+                hideProgressBar();
                 updateNewsArticles(articles);
             }
         });
@@ -65,5 +66,15 @@ public class HealthFragment extends Fragment {
     private void updateNewsArticles(List<Article> newArticles) {
         newsAdapter.updateArticles(newArticles);
         newsAdapter.notifyDataSetChanged();
+    }
+
+    private void showProgressBar(){
+        binding.progressBar.setVisibility(View.VISIBLE);
+        binding.recyclerView.setVisibility(View.INVISIBLE);
+    }
+
+    private void hideProgressBar(){
+        binding.recyclerView.setVisibility(View.VISIBLE);
+        binding.progressBar.setVisibility(View.GONE);
     }
 }
