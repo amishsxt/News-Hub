@@ -2,6 +2,7 @@ package com.example.newshub.presentation.ui.MainScreen.CategoryFrags;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,8 @@ public class HealthFragment extends Fragment {
     private NewsViewModel newsViewModel;
     private NewsAdapter newsAdapter;
 
+    private List<Article> articleList;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -48,6 +51,7 @@ public class HealthFragment extends Fragment {
         newsViewModel.getCategoryNewsArticles().observe(this, new Observer<List<Article>>() {
             @Override
             public void onChanged(List<Article> articles) {
+                articleList = articles;
                 hideProgressBar();
                 updateNewsArticles(articles);
             }
@@ -76,5 +80,30 @@ public class HealthFragment extends Fragment {
     private void hideProgressBar(){
         binding.recyclerView.setVisibility(View.VISIBLE);
         binding.progressBar.setVisibility(View.GONE);
+    }
+
+    public void onSearch(String query) {
+        Log.d("onSearch","done: "+query);
+        filterArticlesByTitle(articleList, query);
+    }
+
+    private void filterArticlesByTitle(List<Article> originalList, String keyword) {
+        List<Article> filteredList = new ArrayList<>();
+
+        // Iterate through the original list
+        for (Article article : originalList) {
+            // Split the title into words
+            String[] titleWords = article.getTitle().toLowerCase().split("\\s+");
+
+            // Check if any of the words contain the keyword (case-insensitive)
+            for (String word : titleWords) {
+                if (word.contains(keyword.toLowerCase())) {
+                    filteredList.add(article);
+                    break;
+                }
+            }
+        }
+
+        updateNewsArticles(filteredList);
     }
 }

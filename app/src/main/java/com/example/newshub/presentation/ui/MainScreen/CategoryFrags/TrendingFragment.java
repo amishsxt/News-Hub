@@ -2,6 +2,7 @@ package com.example.newshub.presentation.ui.MainScreen.CategoryFrags;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.example.newshub.R;
 import com.example.newshub.data.model.Article;
 import com.example.newshub.databinding.FragmentTrendingBinding;
 import com.example.newshub.presentation.adapter.NewsAdapter;
+import com.example.newshub.presentation.ui.MainScreen.MainActivity;
 import com.example.newshub.presentation.ui.NewsScreen.NewsActivity;
 import com.example.newshub.presentation.viewModels.NewsViewModel;
 
@@ -27,6 +29,8 @@ public class TrendingFragment extends Fragment{
     private FragmentTrendingBinding binding;
     private NewsAdapter newsAdapter;
     private NewsViewModel newsViewModel;
+
+    private List<Article> articleList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -48,6 +52,7 @@ public class TrendingFragment extends Fragment{
         newsViewModel.getNewsArticles().observe(this, new Observer<List<Article>>() {
             @Override
             public void onChanged(List<Article> articles) {
+                articleList = articles;
                 hideProgressBar();
                 updateNewsArticles(articles);
             }
@@ -76,6 +81,33 @@ public class TrendingFragment extends Fragment{
     private void hideProgressBar(){
         binding.recyclerView.setVisibility(View.VISIBLE);
         binding.progressBar.setVisibility(View.GONE);
+    }
+
+    public void onSearch(String query) {
+        Log.d("onSearch","done: "+query);
+        filterArticlesByTitle(articleList, query);
+    }
+
+    private void filterArticlesByTitle(List<Article> originalList, String keyword) {
+        List<Article> filteredList = new ArrayList<>();
+
+        Log.d("og list size", String.valueOf(originalList.size()));
+
+        // Iterate through the original list
+        for (Article article : originalList) {
+            // Split the title into words
+            String[] titleWords = article.getTitle().toLowerCase().split("\\s+");
+
+            // Check if any of the words contain the keyword (case-insensitive)
+            for (String word : titleWords) {
+                if (word.contains(keyword.toLowerCase())) {
+                    filteredList.add(article);
+                    break;
+                }
+            }
+        }
+
+        updateNewsArticles(filteredList);
     }
 }
 
