@@ -18,6 +18,21 @@ News Hub is an Android application that provides users with quick access to summ
   
 - **User-Friendly Interface**: Enjoy an intuitive and visually appealing user interface designed for smooth navigation and optimal readability on various screen sizes.
 
+## Screenshots
+<table>
+    <tr>
+        <td><img src="https://github.com/amishsxt/News-Hub/assets/93335461/6a8b9564-37a1-42c4-9be3-efd9200e504a" alt="Screenshot 01" width="100%"></td>
+        <td><img src="https://github.com/amishsxt/News-Hub/assets/93335461/bcd7b28e-3efa-432b-8dc7-cc487d317312" alt="Screenshot 02" width="100%"></td>
+        <td><img src="https://github.com/amishsxt/News-Hub/assets/93335461/8e6873dc-a3f8-4f67-ae4b-d547170fd9aa" alt="Screenshot 03" width="100%"></td>
+    </tr>
+    <tr>
+        <td><img src="https://github.com/amishsxt/News-Hub/assets/93335461/53430e4b-a520-49b5-8299-7bc089bf45f0" alt="Screenshot 04" width="100%"></td>
+        <td><img src="https://github.com/amishsxt/News-Hub/assets/93335461/38452725-766b-4c59-8604-dcbd48247d2b" alt="Screenshot 05" width="100%"></td>
+        <td><img src="https://github.com/amishsxt/News-Hub/assets/93335461/c0966402-81e3-4051-a00d-dd8909d9cd27" alt="Screenshot 07" width="100%"></td>
+    </tr>
+</table>
+
+
 ## Technologies Used
 
 - **Java and XML**: The project is developed using Java for application logic and XML for defining the user interface layout, adhering to standard practices in Android development.
