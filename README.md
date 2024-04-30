@@ -6,7 +6,7 @@ News Hub is an Android application that provides users with quick access to summ
 
 - **News Aggregation**: Access the latest news articles from diverse categories including general, business, technology, sports, entertainment, and more, sourced from reputable Indian news sources.
   
-- **Customized News Experience**: Personalize your news feed by selecting favorite categories or sources, ensuring that you stay informed about topics that matter most to you.
+- **Customized News Experience**: Personalize your news feed by selecting favourite categories or sources, ensuring that you stay informed about topics that matter most to you.
   
 - **Article Summarization**: Get concise summaries of news articles, enabling you to grasp the key information quickly and efficiently.
   
@@ -20,11 +20,20 @@ News Hub is an Android application that provides users with quick access to summ
 
 ## Technologies Used
 
-This project is built using Java and XML, following best practices in Android development. The MVVM architecture pattern is implemented to ensure separation of concerns and maintainability of code. It integrates with a reliable news API to fetch real-time news updates, ensuring that users are always up to date with the latest information from across India.
+- **Java and XML**: The project is developed using Java for application logic and XML for defining the user interface layout, adhering to standard practices in Android development.
+  
+- **MVVM Architecture**: The application follows the Model-View-ViewModel (MVVM) architecture pattern to maintain the separation of concerns, enhance testability, and promote code maintainability.
+  
+- **News API Integration**: It seamlessly integrates with a reliable news API to fetch real-time news updates, ensuring users have access to the latest information across various categories.
+  
+- **Picasso**: Picasso library is utilized for efficient loading and displaying of images within news articles, providing users with a visually engaging experience.
+  
+- **Room Database**: The application implements a local database using Room, an abstraction layer over SQLite, enabling seamless storage and retrieval of news articles locally on the device.
+  
+- **LiveData**: LiveData, part of the Android Architecture Components, is leveraged for data observation, ensuring that UI updates reflect changes in the underlying data in a reactive manner.
+  
+- **View Binding**: View Binding is employed to generate binding classes for interacting with views in XML layouts, enhancing code readability, reducing boilerplate code, and improving maintainability.
 
-## Contribution
-
-Contributions and feedback are welcome. Feel free to fork the project, submit pull requests, or report issues on GitHub.
 
 ## Getting Started
 
