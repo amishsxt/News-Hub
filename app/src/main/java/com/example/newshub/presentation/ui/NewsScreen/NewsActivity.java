@@ -37,13 +37,6 @@ public class NewsActivity extends AppCompatActivity{
         //getting intent
         article = (Article) getIntent().getSerializableExtra("articleObject");
 
-        int isThere = getIntent().getIntExtra("isThere", 0);
-        if (isThere != 0) {
-            isBookmarked = true;
-            binding.bookmarkBtn.setImageResource(R.drawable.star_filled_ic);
-        }
-
-
         localDataViewModel = new ViewModelProvider(this).get(LocalDataViewModel.class);
 
         setData();
@@ -107,6 +100,11 @@ public class NewsActivity extends AppCompatActivity{
         if(article.getUrlToImage()!=null){
             setPicture(binding.articleImg, Uri.parse(article.getUrlToImage()))  ;
         }
+
+        if(localDataViewModel.isThere(article.getTitle())){
+            isBookmarked = true;
+            binding.bookmarkBtn.setImageResource(R.drawable.star_filled_ic);
+        }
     }
 
     private void setPicture(ImageView imageView, Uri uri){
@@ -153,7 +151,7 @@ public class NewsActivity extends AppCompatActivity{
         if(isBookmarked){
             localDataViewModel.saveArticle(article);
         }else{
-            localDataViewModel.deleteArticle(article);
+            localDataViewModel.deleteArticle(article.getTitle());
         }
     }
 }

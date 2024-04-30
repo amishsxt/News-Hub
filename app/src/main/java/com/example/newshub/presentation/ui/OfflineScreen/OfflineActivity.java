@@ -71,7 +71,6 @@ public class OfflineActivity extends AppCompatActivity {
 
             Intent intent = new Intent(OfflineActivity.this, NewsActivity.class);
             intent.putExtra("articleObject", article1);
-            intent.putExtra("isThere", 1);
             startActivity(intent);
         });
 

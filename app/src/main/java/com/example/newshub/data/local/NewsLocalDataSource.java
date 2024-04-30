@@ -28,35 +28,17 @@ public class NewsLocalDataSource {
         newsDatabase.newsDao().insert(article);
     }
 
-    public void deleteArticle(NewsArticle article) {
-        newsDatabase.newsDao().delete(article.getTitle());
+    public void deleteArticle(String title) {
+        newsDatabase.newsDao().delete(title);
     }
 
-//    private static class InsertArticleAsyncTask extends AsyncTask<NewsArticle, Void, Void> {
-//        private NewsDao newsDao;
-//
-//        InsertArticleAsyncTask(NewsDao newsDao) {
-//            this.newsDao = newsDao;
-//        }
-//
-//        @Override
-//        protected Void doInBackground(NewsArticle... articles) {
-//            newsDao.insert(articles[0]);
-//            return null;
-//        }
-//    }
-//
-//    private static class DeleteArticleAsyncTask extends AsyncTask<NewsArticle, Void, Void> {
-//        private NewsDao newsDao;
-//
-//        DeleteArticleAsyncTask(NewsDao newsDao) {
-//            this.newsDao = newsDao;
-//        }
-//
-//        @Override
-//        protected Void doInBackground(NewsArticle... articles) {
-//            newsDao.delete(articles[0]);
-//            return null;
-//        }
-//    }
+    public boolean isThere(String title){
+        int a = newsDatabase.newsDao().getArticleCount(title);
+
+        if(a > 0){
+            return true;
+        }
+
+        return false;
+    }
 }

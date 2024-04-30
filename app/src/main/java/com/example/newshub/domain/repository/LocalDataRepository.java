@@ -25,8 +25,12 @@ public class LocalDataRepository {
         localDataSource.insertArticle(article);
     }
 
-    public void deleteArticle(NewsArticle article) {
-        localDataSource.deleteArticle(article);
+    public void deleteArticle(String title) {
+        localDataSource.deleteArticle(title);
+    }
+
+    public boolean isThere(String title){
+        return localDataSource.isThere(title);
     }
 
 }

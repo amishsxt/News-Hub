@@ -32,9 +32,12 @@ public class LocalDataViewModel extends AndroidViewModel {
         localDataRepository.saveArticle(newsArticle);
     }
 
-    public void deleteArticle(Article article) {
-        NewsArticle newsArticle = convert(article);
-        localDataRepository.deleteArticle(newsArticle);
+    public void deleteArticle(String title) {
+        localDataRepository.deleteArticle(title);
+    }
+
+    public boolean isThere(String title){
+        return localDataRepository.isThere(title);
     }
 
     private NewsArticle convert(Article article){

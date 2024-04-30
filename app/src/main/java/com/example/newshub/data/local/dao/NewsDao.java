@@ -21,4 +21,7 @@ public interface NewsDao {
 
     @Query("SELECT * FROM news_articles")
     LiveData<List<NewsArticle>> getAllArticles();
+
+    @Query("SELECT COUNT(*) FROM news_articles WHERE title = :articleTitle")
+    int getArticleCount(String articleTitle);
 }
