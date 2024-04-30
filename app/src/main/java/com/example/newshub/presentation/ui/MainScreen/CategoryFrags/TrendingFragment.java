@@ -16,7 +16,6 @@ import com.example.newshub.R;
 import com.example.newshub.data.model.Article;
 import com.example.newshub.databinding.FragmentTrendingBinding;
 import com.example.newshub.presentation.adapter.NewsAdapter;
-import com.example.newshub.presentation.ui.MainScreen.MainActivity;
 import com.example.newshub.presentation.ui.NewsScreen.NewsActivity;
 import com.example.newshub.presentation.viewModels.NewsViewModel;
 

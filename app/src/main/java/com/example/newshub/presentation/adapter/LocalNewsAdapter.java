@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.newshub.R;
 import com.example.newshub.data.local.entities.NewsArticle;
-import com.example.newshub.data.model.Article;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 

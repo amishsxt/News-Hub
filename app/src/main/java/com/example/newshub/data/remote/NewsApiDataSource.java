@@ -6,14 +6,13 @@ import com.example.newshub.data.model.Article;
 import com.example.newshub.data.model.ArticleResponse;
 import com.example.newshub.utils.DataSourceCallback;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
-import java.util.Arrays;
-import java.util.List;
 
 public class NewsApiDataSource implements NewsRemoteDataSource {
 

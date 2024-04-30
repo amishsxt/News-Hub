@@ -1,7 +1,6 @@
 package com.example.newshub.data.local;
 
 import android.app.Application;
-import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
@@ -30,7 +29,7 @@ public class NewsLocalDataSource {
     }
 
     public void deleteArticle(NewsArticle article) {
-        newsDatabase.newsDao().delete(article);
+        newsDatabase.newsDao().delete(article.getTitle());
     }
 
 //    private static class InsertArticleAsyncTask extends AsyncTask<NewsArticle, Void, Void> {

@@ -1,9 +1,6 @@
 package com.example.newshub.data.remote;
 
-import com.example.newshub.data.model.Article;
 import com.example.newshub.data.model.ArticleResponse;
-
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

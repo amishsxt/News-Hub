@@ -1,9 +1,6 @@
 package com.example.newshub.domain.repository;
 
-import android.util.Log;
-
 import com.example.newshub.data.model.Article;
-import com.example.newshub.data.model.ArticleResponse;
 import com.example.newshub.data.remote.NewsApiDataSource;
 import com.example.newshub.data.remote.NewsRemoteDataSource;
 import com.example.newshub.utils.DataSourceCallback;

@@ -8,17 +8,16 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import com.example.newshub.data.local.entities.NewsArticle;
-import com.example.newshub.data.model.Article;
 
 import java.util.List;
 
 @Dao
 public interface NewsDao {
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(NewsArticle article);
 
-    @Delete
-    void delete(NewsArticle article);
+    @Query("DELETE FROM news_articles WHERE title = :articleTitle")
+    void delete(String articleTitle);
 
     @Query("SELECT * FROM news_articles")
     LiveData<List<NewsArticle>> getAllArticles();

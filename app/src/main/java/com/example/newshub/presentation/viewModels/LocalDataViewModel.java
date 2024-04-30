@@ -6,11 +6,9 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.example.newshub.data.local.entities.NewsArticle;
 import com.example.newshub.data.model.Article;
-import com.example.newshub.data.model.Source;
 import com.example.newshub.domain.repository.LocalDataRepository;
 
 import java.util.List;

@@ -26,6 +26,8 @@ public class NewsActivity extends AppCompatActivity{
 
     private LocalDataViewModel localDataViewModel;
 
+    public boolean isBookmarked = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,13 @@ public class NewsActivity extends AppCompatActivity{
         //getting intent
         article = (Article) getIntent().getSerializableExtra("articleObject");
 
+        int isThere = getIntent().getIntExtra("isThere", 0);
+        if (isThere != 0) {
+            isBookmarked = true;
+            binding.bookmarkBtn.setImageResource(R.drawable.star_filled_ic);
+        }
+
+
         localDataViewModel = new ViewModelProvider(this).get(LocalDataViewModel.class);
 
         setData();
@@ -42,7 +51,7 @@ public class NewsActivity extends AppCompatActivity{
         binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                onBackPressed();
             }
         });
 
@@ -63,7 +72,14 @@ public class NewsActivity extends AppCompatActivity{
         binding.bookmarkBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                localDataViewModel.saveArticle(article);
+                isBookmarked = !isBookmarked; // Toggle the bookmark state
+
+                // Change the drawable based on the bookmark state
+                if (isBookmarked) {
+                    binding.bookmarkBtn.setImageResource(R.drawable.star_filled_ic);
+                } else {
+                    binding.bookmarkBtn.setImageResource(R.drawable.star_ic);
+                }
             }
         });
     }
@@ -129,5 +145,15 @@ public class NewsActivity extends AppCompatActivity{
         shareIntent.putExtra(Intent.EXTRA_TEXT, article.getUrl());
 
         startActivity(Intent.createChooser(shareIntent, "Share with"));
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if(isBookmarked){
+            localDataViewModel.saveArticle(article);
+        }else{
+            localDataViewModel.deleteArticle(article);
+        }
     }
 }

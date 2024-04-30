@@ -1,15 +1,14 @@
 package com.example.newshub.presentation.ui.OfflineScreen;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-
-import com.example.newshub.R;
 import com.example.newshub.data.local.entities.NewsArticle;
 import com.example.newshub.data.model.Article;
 import com.example.newshub.data.model.Source;
@@ -72,6 +71,7 @@ public class OfflineActivity extends AppCompatActivity {
 
             Intent intent = new Intent(OfflineActivity.this, NewsActivity.class);
             intent.putExtra("articleObject", article1);
+            intent.putExtra("isThere", 1);
             startActivity(intent);
         });
 

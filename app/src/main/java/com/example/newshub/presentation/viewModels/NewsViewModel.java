@@ -5,9 +5,8 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.newshub.data.model.Article;
-import com.example.newshub.data.model.ArticleResponse;
-import com.example.newshub.utils.DataSourceCallback;
 import com.example.newshub.domain.repository.NewsRepository;
+import com.example.newshub.utils.DataSourceCallback;
 
 import java.util.List;
 

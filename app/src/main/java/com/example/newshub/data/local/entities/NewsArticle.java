@@ -1,18 +1,23 @@
 package com.example.newshub.data.local.entities;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 
 import java.util.Date;
 
-@Entity(tableName = "news_articles")
+@Entity(tableName = "news_articles", indices = {@Index(value = {"title"}, unique = true)})
 public class NewsArticle {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
     private String sourceId;
     private String sourceName;
+
+    @ColumnInfo(name = "title")
     private String title;
+
     private String description;
     private String content;
     private String author;
