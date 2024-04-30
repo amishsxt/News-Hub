@@ -9,11 +9,13 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.newshub.R;
 import com.example.newshub.data.model.Article;
 import com.example.newshub.databinding.ActivityNewsBinding;
 import com.example.newshub.presentation.utils.DateFormatter;
+import com.example.newshub.presentation.viewModels.LocalDataViewModel;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -21,6 +23,8 @@ public class NewsActivity extends AppCompatActivity{
 
     private ActivityNewsBinding binding;
     private Article article;
+
+    private LocalDataViewModel localDataViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,8 @@ public class NewsActivity extends AppCompatActivity{
 
         //getting intent
         article = (Article) getIntent().getSerializableExtra("articleObject");
+
+        localDataViewModel = new ViewModelProvider(this).get(LocalDataViewModel.class);
 
         setData();
 
@@ -51,6 +57,13 @@ public class NewsActivity extends AppCompatActivity{
             @Override
             public void onClick(View view) {
                 share();
+            }
+        });
+
+        binding.bookmarkBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                localDataViewModel.saveArticle(article);
             }
         });
     }

@@ -53,7 +53,10 @@ dependencies {
 
     // Room dependencies
     implementation("androidx.room:room-runtime:2.6.1")
-    annotationProcessor ("androidx.room:room-compiler:2.6.1")
+    annotationProcessor("androidx.room:room-compiler:2.6.1")
+
+    //picasso
+    implementation("com.squareup.picasso:picasso:2.8")
 
     //paging
     implementation("androidx.paging:paging-runtime:3.2.1")
@@ -63,7 +66,4 @@ dependencies {
 
     //ssp
     implementation("com.intuit.ssp:ssp-android:1.1.0")
-
-    //picasso
-    implementation("com.squareup.picasso:picasso:2.8")
 }
